@@ -1,0 +1,3 @@
+- Stop if no message for 30 seconds and display error.
+- Button in toolbar or panel that only exists or becomes enabled on Chase activity page.
+- Abort if "configure directory" error or image otherwise doesn't succeed.
