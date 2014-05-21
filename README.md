@@ -4,7 +4,7 @@ A firefox extension to quickly download check images from Chase.
 
 **Motivation**
 --------------
-If you're like me, then you love the fact that Chase allows you to access check images online.  Not just check that you wrote, either.
+If you're like me, then you love the fact that Chase allows you to access check images online.  Not just checks that you wrote, either.
 Checks you deposited, too.  But it irks you that the website is slow and it takes a long time to do it manually.
 
 This extension will automate the process for you.
@@ -27,7 +27,7 @@ The extension will take control and download all check images on the visible pag
 
 **Todo**
 --------
- - Stop if no message for 30 seconds and show an error.
- - UI that disappears or is disabled if you're not on the Chase activity page?
- - Abort if "configure directory" error or image otherwise doesn't succeed.
- - Add LICENSE file
+ - Stop if process stalls for 30 seconds and show an error
+ - Should the button disappear or be disabled if you're not on the Chase activity page?
+ - Abort if "configure directory" error or image otherwise doesn't succeed
+ - Add LICENSE file to this repository
