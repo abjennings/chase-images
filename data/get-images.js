@@ -56,14 +56,18 @@
 
 				function clickNextLink() {
 					var depositDetailsTbl = document.getElementById('DepositDetailsList');
-					var links = depositDetailsTbl.getElementsByTagName('a');
-					for (var i = links.length - 1; i >= 0; --i) {
-						var link = links[i];
-						if (link.innerHTML.trim() === "See" && !clickedLinks[link.id]) {
-							clickedLinks[link.id] = 1;
-							link.click();
-							setTimeout(function() { checkForImage(i); }, 100);
-							return;
+					if (!depositDetailsTbl) {
+						self.port.emit("AddDepositToIgnore", seq);
+					} else {
+						var links = depositDetailsTbl.getElementsByTagName('a');
+						for (var i = links.length - 1; i >= 0; --i) {
+							var link = links[i];
+							if (link.innerHTML.trim() === "See" && !clickedLinks[link.id]) {
+								clickedLinks[link.id] = 1;
+								link.click();
+								setTimeout(function() { checkForImage(i); }, 100);
+								return;
+							}
 						}
 					}
 					returnLink.click();

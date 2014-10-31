@@ -5,7 +5,7 @@
   "description": "Download all check images from Chase quickly",
   "author": "Andrew Jennings",
   "license": "MPL 2.0",
-  "version": "0.14",
+  "version": "0.15",
   "preferences": [{
     "name": "directory",
     "title": "Directory for images",
