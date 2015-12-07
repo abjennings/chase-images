@@ -1,7 +1,7 @@
 var data = require("sdk/self").data;
 var base64 = require("sdk/base64");
 var fileIO = require("sdk/io/file");
-var widget = require("sdk/widget");
+var ui = require("sdk/ui");
 var tabs = require("sdk/tabs");
 var simplePrefs = require("sdk/simple-prefs");
 var notifications = require("sdk/notifications");
@@ -76,12 +76,11 @@ function attachToTab(tab) {
 	}
 }
 
-widget.Widget({
+ui.ActionButton({
 	id: "chase-images",
-	label: "Download all images",
-	content: "Chase",
-	width: 40,
-	onClick: function() {
+	label: "Download check images from Chase",
+	icon: "./icon18.png",
+	onClick: function(state) {
 		if (attachToTab(tabs.activeTab)) {
 			tabs.activeTab.on('ready', attachToTab);
 		}

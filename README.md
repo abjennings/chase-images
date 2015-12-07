@@ -19,7 +19,7 @@ Then, log in to Chase and go to your account page, which should look like this:
 
 ![Chase account screenshot](https://raw.githubusercontent.com/abjennings/chase-images/master/images/screenshot.png)
 
-click the "Chase" text in the add-on bar:
+click the "Download Checks" icon in the add-on bar:
 
 ![Add-on bar screenshot](https://raw.githubusercontent.com/abjennings/chase-images/master/images/button.png)
 
