@@ -6,6 +6,7 @@ var tabs = require("sdk/tabs");
 var simplePrefs = require("sdk/simple-prefs");
 var notifications = require("sdk/notifications");
 var depositsToIgnore = {};
+var haveChecks = {};
 
 function SaveImage(msg) {
 	var fname = msg[0];
@@ -38,16 +39,21 @@ function AddDepositToIgnore(depno)
 function ItemList(lst) {
 	var dir = simplePrefs.prefs['directory'];
 	var fileList = fileIO.list(dir);
-	var fileEndRE = /_(\d+)\.png$/;
+	var fileEndRE = /_([-0-9a-fA-F]+)\.png$/;
+	var checkRE = /_check_(\d+)_/;
 	var fileDict = {};
 	for (var i = 0; i < fileList.length; ++i) {
 		var fileEndMatch = fileEndRE.exec(fileList[i]);
 		if (fileEndMatch) {
-			fileDict[fileEndMatch[1]] = 1;
+			fileDict[fileEndMatch[1].toLowerCase()] = 1;
+		}
+		var checkMatch = checkRE.exec(fileList[i]);
+		if (checkMatch) {
+			haveChecks['ck' + checkMatch[1]] = 1;
 		}
 	}
 	for (i = 0; i < lst.length; ++i) {
-		if (!fileDict[lst[i]] && !depositsToIgnore[lst[i]]) {
+		if (!fileDict[lst[i]] && !haveChecks[lst[i]] && !depositsToIgnore[lst[i]]) {
 			activityWorker.port.emit('Goto', lst[i]);
 			return;
 		}

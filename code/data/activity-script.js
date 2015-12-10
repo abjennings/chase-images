@@ -1,5 +1,6 @@
 (function() {
 	var itemJSRE = /^javascript:DoPostBackFor[A-Za-z]+\('[^']+','[^']+','[^']+','[^']+','(\d+)','[^']+','[^']+','[^']+','[^']+','[^']+'\)$/;
+	var cknoRE = /^\s*CHECK\s+#\s+(\d+)\s*$/;
 
 	self.port.on('AllDownloaded', function() {
 		alert("All images on this page have been downloaded.");
@@ -13,12 +14,17 @@
 		var links = transTable.getElementsByTagName('a');
 		for (var i = links.length - 1; i >= 0; --i) {
 			var link = links[i];
-			if (link.innerHTML.trim() === "(view)") {
+			if (link.textContent.trim() === "(view)") {
 				var itemMatch = itemJSRE.exec(link.href);
 				if (itemMatch) {
 					callback(itemMatch[1], link);
 				} else {
 					console.error("Unrecognized (view) link: " + link.href);
+				}
+			} else {
+				var cknoMatch = cknoRE.exec(link.textContent);
+				if (cknoMatch) {
+					callback('ck' + cknoMatch[1], link);
 				}
 			}
 		}
