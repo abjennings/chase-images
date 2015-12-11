@@ -1,6 +1,6 @@
 (function() {
 	var itemJSRE = /^javascript:DoPostBackFor[A-Za-z]+\('[^']+','[^']+','[^']+','[^']+','(\d+)','[^']+','[^']+','[^']+','[^']+','[^']+'\)$/;
-	var cknoRE = /^\s*CHECK\s+#\s+(\d+)\s*$/;
+	var cknoRE = /^\s*CHECK\s+#\s+(\d+)(\s+\d+\/\d+)?\s*$/;
 
 	self.port.on('AllDownloaded', function() {
 		alert("All images on this page have been downloaded.");
